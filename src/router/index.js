@@ -7,6 +7,7 @@ import FeaturesView from "../views/FeaturesView.vue";
 import MarketplaceView from "../views/MarketplaceView.vue";
 
 import ProductView from "../views/ProductView.vue";
+import ArticleView from "../views/ArticleView.vue";
 
 // Определяем маршруты
 const routes = [
@@ -20,6 +21,12 @@ const routes = [
   //   name: "about",
   //   component: () => import("../views/ProductView.vue"), // Ленивая загрузка для About
   // },
+  {
+    path: "/article/:id",
+    name: "ArticleView",
+    component: ArticleView,
+    props: true,
+  },
   {
     path: "/company",
     name: "company",
