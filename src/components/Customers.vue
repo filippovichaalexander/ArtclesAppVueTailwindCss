@@ -16,12 +16,12 @@
       <div
         class="customers__cards mt-8 w-full transition-all duration-500 ease-in-out"
       >
-        <User
-          v-for="customer in displayedCustomers"
-          :key="customer.id"
-          :customer="customer"
+        <Article
+          v-for="post in displayedCustomers"
+          :key="post.id"
+          :post="post"
           class="mt-6 rounded-xl shadow-lg hover:shadow-2xl hover:cursor-pointer transition-all duration-300 ease-in-out"
-          @click="navigateToArticle(customer.id)"
+          @click="navigateToArticle(post.id)"
         />
       </div>
     </div>
@@ -48,24 +48,18 @@
             class="text-sm text-gray-700 transition-all duration-500 ease-in-out"
           >
             Showing
-            {{ " " }}
             <span class="font-medium transition-all duration-500 ease-in-out">{{
               (currentPage - 1) * itemsPerPage + 1
             }}</span>
-            {{ " " }}
             to
-            {{ " " }}
             <span class="font-medium transition-all duration-500 ease-in-out">{{
-              Math.min(
-                currentPage * itemsPerPage,
-                counterStore.customers.length
-              )
+              Math.min(currentPage * itemsPerPage, counterStore.posts.length)
             }}</span>
             {{ " " }}
             of
             {{ " " }}
             <span class="font-medium transition-all duration-500 ease-in-out">
-              {{ counterStore.customers.length }}</span
+              {{ counterStore.posts.length }}</span
             >
             results
           </p>
@@ -106,10 +100,13 @@
               :class="{
                 'cursor-not-allowed opacity-50': currentPage === totalPages,
               }"
-              @click.prevent="nextPage"
             >
               <span class="sr-only">Next</span>
-              <ChevronRightIcon class="h-5 w-5" aria-hidden="true" />
+              <ChevronRightIcon
+                class="h-5 w-5"
+                aria-hidden="true"
+                @click.prevent="nextPage"
+              />
             </a>
           </nav>
         </div>
@@ -121,7 +118,7 @@
 <script setup>
 import { useCounterStore } from "@/stores/counter";
 import { onBeforeMount, ref, computed } from "vue";
-import User from "./User.vue";
+import Article from "./Article.vue";
 import { useRouter } from "vue-router";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/vue/20/solid";
 
@@ -131,15 +128,13 @@ const router = useRouter();
 let currentPage = ref(1);
 const itemsPerPage = 10;
 const totalPages = computed(() => {
-  return Math.ceil(counterStore.customers.length / itemsPerPage);
+  return Math.ceil(counterStore.posts.length / itemsPerPage);
 });
 
 onBeforeMount(() => {
-  debugger;
   counterStore.fetchCustomers();
 });
 const navigateToArticle = async (id) => {
-  debugger;
   router.push({ name: "ArticleView", params: { id } });
   await counterStore.fetchPost(id);
 };
@@ -151,7 +146,7 @@ const prevPage = () => {
 };
 
 const nextPage = () => {
-  if (currentPage.value < totalPages) {
+  if (currentPage.value < Math.ceil(counterStore.posts.length / itemsPerPage)) {
     currentPage.value++;
   }
 };
@@ -162,7 +157,7 @@ const setPage = (page) => {
 const displayedCustomers = computed(() => {
   const startIndex = (currentPage.value - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  return counterStore.customers.slice(startIndex, endIndex);
+  return counterStore.posts.slice(startIndex, endIndex);
 });
 </script>
 <style scoped>

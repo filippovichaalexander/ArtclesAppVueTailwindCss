@@ -1,26 +1,24 @@
-import { ref, computed } from "vue";
+import { ref } from "vue";
 import { defineStore } from "pinia";
 
 export const useCounterStore = defineStore("counter", () => {
-  const customers = ref([]);
+  const posts = ref([]);
   const post = ref({});
 
   async function fetchCustomers() {
-    debugger;
     try {
       const response = await fetch(
         "https://jsonplaceholder.typicode.com/posts"
       );
-      customers.value = await response.json();
+      posts.value = await response.json();
     } catch (error) {
-      console.error("Error fetching customers:", error);
+      console.error("Error fetching posts:", error);
     }
   }
-  async function fetchPost(customerId) {
-    debugger;
+  async function fetchPost(postId) {
     try {
       const response = await fetch(
-        `https://jsonplaceholder.typicode.com/posts/${customerId}`
+        `https://jsonplaceholder.typicode.com/posts/${postId}`
       );
       post.value = await response.json();
       console.log("Fetched post:", post.value);
@@ -29,5 +27,5 @@ export const useCounterStore = defineStore("counter", () => {
     }
   }
 
-  return { customers, fetchCustomers, fetchPost, post };
+  return { posts, fetchCustomers, fetchPost, post };
 });

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>This is an Features page</h1>
+    <h1>This is the Features page</h1>
   </div>
 </template>
 

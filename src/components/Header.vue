@@ -1,11 +1,4 @@
 <template>
-  <!-- <header>
-    <nav class="bg-blue-500 text-white p-5">
-      <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/about">About</RouterLink>
-      <RouterLink to="/contact">Contact</RouterLink>
-    </nav>
-  </header> -->
   <header class="inset-x-0">
     <nav
       class="flex items-center justify-between p-6 lg:px-8"
@@ -83,12 +76,7 @@
         >
       </div>
     </nav>
-    <!-- Mobile menu, show/hide based on menu open state. -->
-    <!-- class="lg:hidden" -->
-    <!-- :class="{ opacity: mobileMenuOpen }"
-    class="menu-sidebar" -->
     <div v-if="mobileMenuOpen" role="dialog" aria-modal="true">
-      <!-- Background backdrop, show/hide based on slide-over state. -->
       <div class="fixed inset-0 bg-gray-500 bg-opacity-75"></div>
       <div
         class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
@@ -176,99 +164,8 @@
 
 <script setup>
 import { ref } from "vue";
-import {
-  Dialog,
-  DialogPanel,
-  Disclosure,
-  DisclosureButton,
-  DisclosurePanel,
-  Popover,
-  PopoverButton,
-  PopoverGroup,
-  PopoverPanel,
-} from "@headlessui/vue";
-import {
-  ArrowPathIcon,
-  Bars3Icon,
-  ChartPieIcon,
-  CursorArrowRaysIcon,
-  FingerPrintIcon,
-  SquaresPlusIcon,
-  XMarkIcon,
-} from "@heroicons/vue/24/outline";
-import {
-  ChevronDownIcon,
-  PhoneIcon,
-  PlayCircleIcon,
-} from "@heroicons/vue/20/solid";
-
-const products = [
-  {
-    name: "Analytics",
-    description: "Get a better understanding of your traffic",
-    href: "#",
-    icon: ChartPieIcon,
-  },
-  {
-    name: "Engagement",
-    description: "Speak directly to your customers",
-    href: "#",
-    icon: CursorArrowRaysIcon,
-  },
-  {
-    name: "Security",
-    description: "Your customers’ data will be safe and secure",
-    href: "#",
-    icon: FingerPrintIcon,
-  },
-  {
-    name: "Integrations",
-    description: "Connect with third-party tools",
-    href: "#",
-    icon: SquaresPlusIcon,
-  },
-  {
-    name: "Automations",
-    description: "Build strategic funnels that will convert",
-    href: "#",
-    icon: ArrowPathIcon,
-  },
-];
-const callsToAction = [
-  { name: "Watch demo", href: "#", icon: PlayCircleIcon },
-  { name: "Contact sales", href: "#", icon: PhoneIcon },
-];
 
 const mobileMenuOpen = ref(false);
 </script>
 
-<style scoped>
-/* .menu-sidebar {
-  position: absolute;
-  right: -100%;
-}
-.opacity {
-  position: absolute;
-  right: 200px;
-  opacity: 1;
-  transition: opacity 5s, right 5s;
-} */
-/* header {
-  background-color: #f8f9fa;
-  padding: 1rem;
-}
-
-nav {
-  display: flex;
-  gap: 1rem;
-}
-
-nav a {
-  text-decoration: none;
-  color: #007bff;
-}
-
-nav a:hover {
-  text-decoration: underline;
-} */
-</style>
+<style scoped></style>

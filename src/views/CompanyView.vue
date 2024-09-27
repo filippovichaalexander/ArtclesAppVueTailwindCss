@@ -1,9 +1,8 @@
 <template>
   <div>
-    <h1>This is an Company page</h1>
+    <h1>This is the Company page</h1>
   </div>
 </template>
-
 <style>
 @media (min-width: 1024px) {
   .about {

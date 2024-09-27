@@ -5,16 +5,20 @@
     <div class="w-full sm:w-1/3 flex items-center justify-center">
       <div class="flex flex-col items-center">
         <span class="text-4xl font-bold text-blue-600">{{
-          props.customer.id
+          props.post.id
         }}</span>
       </div>
     </div>
     <div class="p-6 flex flex-col justify-center w-full">
       <h5 class="text-black-400 font-normal text-xl mb-2">
-        {{ props.customer.title }}
+        {{ props.post.title }}
       </h5>
       <h4 class="text-gray-400 font-normal text-xl mb-2">
-        {{ props.customer.body }}
+        {{
+          props.post.body.length > 67
+            ? props.post.body.slice(0, 67) + "..."
+            : props.post.body
+        }}
       </h4>
       <button
         class="mt-4 flex items-center text-blue-600 hover:text-blue-800 transition-colors duration-300"
@@ -62,12 +66,12 @@
 import { onMounted } from "vue";
 
 const props = defineProps({
-  customer: {
+  post: {
     type: Object,
     required: true,
   },
 });
 onMounted(() => {
-  console.log("Customer name:", props.customer);
+  console.log("post name:", props.post);
 });
 </script>

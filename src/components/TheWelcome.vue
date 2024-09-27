@@ -23,23 +23,12 @@
     </div>
   </div>
 </template>
-<script setup>
-// import WelcomeItem from "./WelcomeItem.vue";
-// import DocumentationIcon from "./icons/IconDocumentation.vue";
-// import ToolingIcon from "./icons/IconTooling.vue";
-// import EcosystemIcon from "./icons/IconEcosystem.vue";
-// import CommunityIcon from "./icons/IconCommunity.vue";
-// import SupportIcon from "./icons/IconSupport.vue";
-</script>
+<script setup></script>
 <style scoped>
 .main__img {
   background-image: url(../assets/images/main-img.jpg);
   height: calc(100vh - 128px);
   background-size: cover;
   background-repeat: no-repeat;
-}
-.container {
-}
-.main__title-top {
 }
 </style>

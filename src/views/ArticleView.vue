@@ -22,16 +22,4 @@ const counterStore = useCounterStore();
 onBeforeMount(() => {
   counterStore.fetchPost(route.params.id);
 });
-// const loading = ref(true);
-
-// onMounted(async () => {
-//   debugger;
-//   try {
-//     await counterStore.fetchPost(route.params.id);
-//     loading.value = false;
-//   } catch (error) {
-//     console.error("Error fetching post:", error);
-//     loading.value = false;
-//   }
-// });
 </script>
